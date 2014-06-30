@@ -12,7 +12,7 @@ import urllib2,urllib
 import os
 
 def main(a1):
-    busq = raw_input("Busq>> ")
+    busq = raw_input("Search song(title first and singer next if possible)      >> ")
     busq.replace(" ", "_")
     openn = urllib2.urlopen("http://www.mp3skull.com/mp3/"+busq+".html")
     reaad = openn.read()
@@ -37,22 +37,22 @@ def descargar(url,reaad,a1,busq):
      cancion = open(mp3nombre, "wb")
      cancion.write(datos)
      cancion.close()
-     print "La cancion se encuentra en: "+ os.getcwd() #directorio (a?adir que se pueda cambiar el directorio)
-     print "Compruebe que es la version de su cancion antes de responder si     quiere otra version."
-     opt = raw_input("Quiere otra version?(s/n)>> ")
+     print "Your song is in: "+ os.getcwd() #directorio (a?adir que se pueda cambiar el directorio)
+     print "Check your song's version before answering if you want another      version."
+     opt = raw_input("Do you want another version of the song?(s/n)>> ")
      if opt == "s":
           main(a1)
      elif opt =="n":
-          opt2 = raw_input("Quiere salir?(s/n)>> ")
+          opt2 = raw_input("Exit?(s/n)>> ")
           if opt2 == "s":
             exit()
           elif opt2 == "n":
             main()
           else:
-            print "Introduzca una opcion valida"
+            print "Type a valid option"
             main()
      else:
-         print "Introduzca una option valida"
+         print "Type a valid option"
          exit
     except urllib2.HTTPError: #si no se encuentra..
         print Exception("Link no encontrado")
